@@ -1,7 +1,7 @@
 <?php
-$servername="database.diubi.dev";
-$username="managermuseo";
-$password="museokyoto";
+$servername="localhost";
+$username="root";
+$password="";
 
 try{
     $conn = new PDO("mysql:host=$servername; dbname=museo", $username, $password);
