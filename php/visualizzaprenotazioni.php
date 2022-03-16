@@ -1,7 +1,7 @@
 <?php
-$servername="localhost";
-$username="root";
-$password="";
+    $servername="database.diubi.dev";
+    $username="managermuseo";
+    $password="museokyoto";
 
 try{
     $conn = new PDO("mysql:host=$servername; dbname=museo", $username, $password);
@@ -23,4 +23,3 @@ if($result->rowCount() > 0){
 else{
     echo "<tr><td>" . "Nessuna prenotazione." . "</td></tr>";
 }
-?>

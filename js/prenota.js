@@ -75,7 +75,9 @@ function reservate(name, contact, n_people, entrance_time) {
             np: n_people,
             e: entrance_time
         },
-        success: function () {
+        success: function (data) {
+            console.log("ID: " + data);
+            document.getElementById("reservationID").textContent = data;
             document.getElementById("form").style.display = "none";
             document.getElementById("success").style.display = "block";
         },
@@ -86,8 +88,6 @@ function reservate(name, contact, n_people, entrance_time) {
     });
     console.log("Name: " + name + "\n Contact: " + contact + "\n People: " + n_people + "\n Entrance Time: " + entrance_time)
 }
-
-
 
 
 function closeError() {

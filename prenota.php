@@ -34,7 +34,7 @@
 <body>
 
   <!-- Primary Page Layout  -->
-
+ 
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/Museo/">
@@ -129,7 +129,7 @@
       <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="  38,15 22,33 12,25 " />
     </svg>
     <div class="centeredText">
-      <h1 class="is-size-2">Prenotazione eseguita correttamente!</h1>
+      <span><h1 class="is-size-2">Prenotazione eseguita correttamente! <br> L'ID della prenotazione è <a id="reservationID" href=""></a></h1></span>
 
     </div>
     <div class="centeredText">
