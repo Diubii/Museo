@@ -1,45 +1,47 @@
 <?php
-if(isset($_REQUEST["n"]) && isset($_REQUEST["c"]) && isset($_REQUEST["e"]) && isset($_REQUEST["np"])){
-    $servername="database.diubi.dev";
-    $username="managermuseo";
-    $password="museokyoto";
+include('methods.php');
+
+$reservationData = json_decode($_POST["reservationData"]);
+$name = $reservationData -> name;
+$contact = $reservationData -> contact;
+$n_people = $reservationData -> n_people;
+$entrance_time = $reservationData -> entrance_time;
+
+if(isset($name) && isset($contact) && isset($entrance_time) && isset($n_people)){
+    $dbservername="database.diubi.dev";
+    $dbusername="managermuseo";
+    $dbpassword="museokyoto";
     
-    try{
-        $conn = new PDO("mysql:host=$servername; dbname=museo", $username, $password);
-        $conn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    catch(PDOException $e){
-        echo "<script>console.log(" . $e->getMessage() . ")</script>";
-        header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error');
-        die("Connessione al database fallita. Riprovare.");
-    }
+    $conn = ConnectToDatabase($dbservername, $dbusername, $dbpassword);
 
     try{
     $binding = $conn -> prepare("INSERT INTO reservation VALUES(:id, :r_name, :contact, :n_people, :entrance_time)");
 
     $id = GenerateID($conn);
     $binding -> bindParam(":id", $id, PDO::PARAM_STR);
-    $binding -> bindParam(":r_name", $_REQUEST["n"], PDO::PARAM_STR);
-    $binding -> bindParam(":contact", $_REQUEST["c"], PDO::PARAM_STR);
-    $binding -> bindParam(":n_people", $_REQUEST["np"], PDO::PARAM_INT);
-    $binding -> bindParam(":entrance_time", $_REQUEST["e"], PDO::PARAM_STR);
+    $binding -> bindParam(":r_name", $name, PDO::PARAM_STR);
+    $binding -> bindParam(":contact", $contact, PDO::PARAM_STR);
+    $binding -> bindParam(":n_people", $n_people, PDO::PARAM_INT);
+    $binding -> bindParam(":entrance_time", $entrance_time, PDO::PARAM_STR);
     $binding -> execute();
-    echo $id;
     }
     catch(PDOException $e){
         echo "<script>console.log(" . $e->getMessage() . ")</script>";
         header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error');
         die("Errore durante l'inserimento dati nel database. Riprovare.");
     }
+
+    echo json_encode($id);
 }
 else{
     try{
     throw new Exception("Inserire tutti i dati.");
     }
     catch(Exception $e){
-        header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error');
-        die();
+        header($_SERVER['SERVER_PROTOCOL'] . " 500 " . $e -> getMessage());
+        die($e -> getMessage());
     }
+
 }
 
 function GenerateID($conn){
@@ -58,4 +60,3 @@ function GenerateID($conn){
 
     return $id; 
 }
-?>

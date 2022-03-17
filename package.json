@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "flatpickr": "^4.6.11"
+    "js-sha256": "^0.9.0"
   }
 }

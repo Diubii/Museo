@@ -65,15 +65,15 @@ function reservate(name, contact, n_people, entrance_time) {
         document.getElementById("NotValidEmail").style.display = "none";
     }
 
+
+    var reservationData = JSON.stringify({"name": name, "contact": contact, "n_people": n_people, "entrance_time": entrance_time});
+    console.log(reservationData);
     $.ajax({
         url: "php/prenota.php",
         type: "POST",
-        dataType: "text",
+        dataType: "json",
         data: {
-            n: name,
-            c: contact,
-            np: n_people,
-            e: entrance_time
+            reservationData: reservationData
         },
         success: function (data) {
             console.log("ID: " + data);
@@ -87,10 +87,4 @@ function reservate(name, contact, n_people, entrance_time) {
         }
     });
     console.log("Name: " + name + "\n Contact: " + contact + "\n People: " + n_people + "\n Entrance Time: " + entrance_time)
-}
-
-
-function closeError() {
-    document.getElementById("form").style.display = "block";
-    document.getElementById("error").style.display = "none";
 }
