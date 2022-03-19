@@ -34,41 +34,7 @@
 
   <!-- Primary Page Layout  -->
 
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/Museo/">
-        <b>IL MUSEO DI KYOTO</b>
-      </a>
-
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="prenotazioni.php">
-          Visualizza prenotazioni
-        </a>
-
-        <a class="navbar-item" href="prenotazioni.php">
-          Gestisci prenotazione
-        </a>
-      </div>
-
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary" href="prenota.php">
-              <strong>Prenota!</strong>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <?php $p = "login-signup.php"; include('php/navbar.php'); ?>
 
   <div class="container centered" id="signupForm" style="display:none;">
     <div class="box">
@@ -152,7 +118,7 @@
       <path class="cls-1" d="M61.44,0A61.44,61.44,0,1,1,0,61.44,61.44,61.44,0,0,1,61.44,0ZM74.58,36.8c1.74-1.77,2.83-3.18,5-1l7,7.13c2.29,2.26,2.17,3.58,0,5.69L73.33,61.83,86.08,74.58c1.77,1.74,3.18,2.83,1,5l-7.13,7c-2.26,2.29-3.58,2.17-5.68,0L61.44,73.72,48.63,86.53c-2.1,2.15-3.42,2.27-5.68,0l-7.13-7c-2.2-2.15-.79-3.24,1-5l12.73-12.7L36.35,48.64c-2.15-2.11-2.27-3.43,0-5.69l7-7.13c2.15-2.2,3.24-.79,5,1L61.44,49.94,74.58,36.8Z" />
     </svg>
     <div class="centeredText">
-      <h1 class="is-size-2">C'è stato un errore durante l'inserimento dei dati, <a onclick="closeError(document.getElementById('signupForm'), document.getElementById('error'));">riprovare</a>.</h1>
+      <span><h1 class="is-size-2" id="errorText"></h1><a class="is-size-2" onclick="closeError(document.getElementById('signupForm'), document.getElementById('error'));">riprovare</a></span>
     </div>
   </div>
 

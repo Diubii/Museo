@@ -69,7 +69,7 @@ function reservate(name, contact, n_people, entrance_time) {
     var reservationData = JSON.stringify({"name": name, "contact": contact, "n_people": n_people, "entrance_time": entrance_time});
     console.log(reservationData);
     $.ajax({
-        url: "php/prenota.php",
+        url: "php/reservate.php",
         type: "POST",
         dataType: "json",
         data: {

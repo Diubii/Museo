@@ -15,20 +15,30 @@ function Login(username, password) {
         document.getElementById("LoginWrongPassword").style.display = "none";
     }
 
-    var loginData = JSON.stringify({ "username": username, "password": password });
+    var loginData = JSON.stringify({ "username": username, "password": sha256(password) });
     $.ajax({
         url: "php/login.php",
         type: "POST",
         dataType: "json",
         data: {
-            json: loginData
+            loginData: loginData
         },
         success: function (data) {
-            console.log("ID: " + data);
+            location.href = "/Museo/";
         },
-        error: function () {
-            document.getElementById("loginForm").style.display = "none";
-            document.getElementById("error").style.display = "block";
+        error: function (data){
+            switch(data.status){
+                case 501:
+                    document.getElementById('LoginWrongUsername').style.display = "block";
+                    return;
+                case 502:
+                    document.getElementById('LoginWrongPassword').style.display = "block";
+                    return;
+                default:
+                    document.getElementById("errorText").textContent = data.responseText;
+                    document.getElementById("loginForm").style.display = "none";
+                    document.getElementById("error").style.display = "block";
+            }
         }
     });
 }
@@ -67,7 +77,7 @@ function Signup(name, username, password) {
             signupData: signupData
         },
         success: function () {
-            location.href = "/Museo/"
+            location.href = "/Museo/";
         },
         error: function (data) {
             console.log(data);

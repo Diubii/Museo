@@ -1,3 +1,8 @@
+<?php 
+session_start();
+//echo "<script>console.log(" ."\"". $_SESSION["username"] ."\"" . ")</script>"
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -34,64 +39,7 @@
 
     <!-- Primary Page Layout  -->
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/Museo/">
-                <b>IL MUSEO DI KYOTO</b>
-            </a>
-
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="prenotazioni.php">
-                    Visualizza prenotazioni
-                </a>
-
-                <div class="navbar-item">
-                    <a class="navbar-item">
-                        Gestisci prenotazione
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-primary" href="prenota.php">
-                        <strong>Prenota!</strong>
-                    </a>
-                </div>
-            </div>
-            <?php if(isset($_SESSION["username"]) && isset($_SESSION["password"])){
-                echo '<div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-primary" href="myaccount.php">
-                        <strong>Il mio account</strong>
-                    </a>
-                </div>
-                </div>';
-            }
-            else{
-                echo '<div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-primary" href="login-signup.php">
-                        <strong>Login / Signup</strong>
-                    </a>
-                </div>
-                </div>';
-            }
-            ?>
-            
-        </div>
-        </div>
-    </nav>
+    <?php $p = "index.php"; include('php/navbar.php'); ?>
 
     <div class="container centered">
 
@@ -102,7 +50,7 @@
                 </div>
                 <div class="block"></div>
                 <div class="buttons centeredText">
-                    <a class="button is-large is-primary" href="prenota.php">
+                    <a class="button is-large is-primary" href="reservate.php">
                         <strong>Prenota!</strong>
                     </a>
                 </div>

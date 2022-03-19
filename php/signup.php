@@ -13,11 +13,16 @@ if(isset($name) && isset($username) && isset($password)){
 
     $conn = ConnectToDatabase($dbservername, $dbusername, $dbpassword);
 
+    $dt = date("Y-m-d H:i:s");
+    $role = "Visitatore del museo";
+
     try{
-        $binding = $conn -> prepare("INSERT INTO account VALUES(:name, :username, :password)");
+        $binding = $conn -> prepare("INSERT INTO account VALUES(:name, :username, :password, :creation_time, :role)");
         $binding -> bindParam(":name", $name, PDO::PARAM_STR);
         $binding -> bindParam(":username", $username, PDO::PARAM_STR);
         $binding -> bindParam(":password", $password, PDO::PARAM_STR);
+        $binding -> bindParam(":creation_time", $dt, PDO::PARAM_STR);
+        $binding -> bindParam(":role", $role, PDO::PARAM_STR);
         $binding -> execute();
     }
     catch(PDOException $e){
@@ -28,8 +33,7 @@ if(isset($name) && isset($username) && isset($password)){
                
     if(session_start()){
         $_SESSION["username"] = $username;
-        $_SESSION["password"] = $password;
-        echo json_encode("Success");
+        echo json_encode(array("Success", $_SESSION["username"]));
     }
     else{
         try{
