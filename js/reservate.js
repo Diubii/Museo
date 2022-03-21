@@ -22,7 +22,7 @@ const validateEmail = (email) => {
         );
 };
 
-function reservate(name, contact, n_people, entrance_time) {
+function reservate(name, contact, n_people, entrance_time, username) {
     //alert(validateEmail(contact));
 
     if (name == "") {
@@ -66,7 +66,7 @@ function reservate(name, contact, n_people, entrance_time) {
     }
 
 
-    var reservationData = JSON.stringify({"name": name, "contact": contact, "n_people": n_people, "entrance_time": entrance_time});
+    var reservationData = JSON.stringify({"name": name, "contact": contact, "n_people": n_people, "entrance_time": entrance_time, "username": username});
     console.log(reservationData);
     $.ajax({
         url: "php/reservate.php",
@@ -81,7 +81,8 @@ function reservate(name, contact, n_people, entrance_time) {
             document.getElementById("form").style.display = "none";
             document.getElementById("success").style.display = "block";
         },
-        error: function () {
+        error: function (data) {
+            console.log(data.responseText);
             document.getElementById("form").style.display = "none";
             document.getElementById("error").style.display = "block";
         }

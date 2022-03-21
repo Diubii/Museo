@@ -19,8 +19,8 @@ $nav = '<nav class="navbar" role="navigation" aria-label="main navigation">
     </a>
 
     <div class="navbar-item">
-      <a class="navbar-item" href="myreservation.php">
-        Gestisci prenotazione
+      <a class="navbar-item" href="myreservations.php">
+        Gestisci prenotazioni
       </a>
     </div>
   </div>

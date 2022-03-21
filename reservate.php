@@ -1,3 +1,8 @@
+<?php
+include('php/methods.php');
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -42,7 +47,15 @@
       <div class="field">
         <label class="label">Nome</label>
         <div class="control">
-          <input class="input" type="text" id="name" name="name" placeholder="es. Mario Rossi" required>
+          <?php if(isset($_SESSION["username"]))
+          {
+            echo '<label id="name">'. "&nbsp;" . GetValue("account", "name", "WHERE username='$_SESSION[username]'") . '</label>'; 
+          }
+          else
+          {
+            echo '<input class="input" type="text" id="name" name="name" placeholder="es. Mario Rossi" required>'; 
+          }
+          ?>
           <p class="help is-danger" id="NotValidName" style="display:none;">Inserire un nome valido.</p>
         </div>
       </div>
@@ -50,7 +63,7 @@
       <div class="field">
         <label class="label">Numero di persone</label>
         <div class="control">
-          <input class="input" id="n_people" type="number" min="1" max="5" value="1" name="n_people" placeholder="es. 4" required>
+          <input class="input" id="n_people" type="number" min="1" max="5" value="1" name="n_people" placeholder="Es. 4" required>
         </div>
         <p class="help is-danger" id="NaN" style="display:none;">Inserire un numero.</p>
         <p class="help is-danger" id="NotValidNumber" style="display:none;">Il numero di persone deve essere compreso tra 1 e 5.</p>
@@ -73,7 +86,7 @@
       </div>
 
       <div class="buttons centeredText">
-        <button class="button is-primary" type="submit" onclick="reservate(document.getElementById('name').value, document.getElementById('contact').value, document.getElementById('n_people').value, document.getElementById('dtpicker').value,)">Prenota!</button>
+        <button class="button is-primary" type="submit" onclick="reservate(document.getElementById('name').textContent || document.getElementById('name').value, document.getElementById('contact').value, document.getElementById('n_people').value, document.getElementById('dtpicker').value, <?php if(isset($_SESSION['username'])){ echo '\'' . $_SESSION['username'] . '\''; } else {echo NULL;} ?>)">Prenota!</button>
       </div>
     </div>
   </div>
@@ -83,7 +96,7 @@
       <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="  38,15 22,33 12,25 " />
     </svg>
     <div class="centeredText">
-      <span><h1 class="is-size-2">Prenotazione eseguita correttamente! <br> L'ID della prenotazione è <a id="reservationID" href=""></a></h1></span>
+      <span><h1 class="is-size-2">Prenotazione eseguita correttamente! <br> L'ID della prenotazione è <a id="reservationID" href="myreservations.php"></a></h1></span>
 
     </div>
     <div class="centeredText">
@@ -112,7 +125,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="js/prenota.js"></script>
+  <script src="js/reservate.js"></script>
   <script src="js/miscellaneous.js"></script>
   <script>
     $("#dtpicker").flatpickr({

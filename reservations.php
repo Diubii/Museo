@@ -42,6 +42,8 @@ session_start();
 
   <div class="container centered">
     <div class="box">
+    <h1 class="is-size-4 centeredText"><b>Tutte le prenotazioni</b></h1>
+    <br>
       <table class="table">
         <thead>
           <tr>
@@ -51,7 +53,7 @@ session_start();
             <th>Contatto</th>
           </tr>
         </thead>
-        <?php include('php/visualizzaprenotazioni.php'); ?>
+        <?php include('php/reservations.php'); ?>
       </table>
     </div>
   </div>

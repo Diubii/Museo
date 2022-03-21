@@ -1,7 +1,5 @@
 <?php
 
-use LDAP\Result;
-
 function ConnectToDatabase($servername, $username, $password){
     try{
         $conn = new PDO("mysql:host=$servername; dbname=museo", $username, $password);
