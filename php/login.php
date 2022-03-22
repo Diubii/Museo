@@ -17,7 +17,6 @@ if(isset($username) && isset($password)){
         $row = $result -> fetch();
     }
     catch(PDOException $e){
-        echo "<script>console.log(" . $e->getMessage() . ")</script>";
         header($_SERVER['SERVER_PROTOCOL'] . "Errore durante l\'inserimento dati nel database. Riprovare.");
         die("Errore durante l'inserimento dati nel database. Riprovare.");
     }

@@ -3,8 +3,8 @@ include('php/methods.php');
 
 session_start();
 if (!isset($_SESSION["username"])) {
-  //header("Location: /Museo/");
-  //die();
+  header("Location: /Museo/");
+  die();
 }
 //echo "<script>console.log(" ."\"". $_SESSION["username"] ."\"" . ")</script>"
 ?>
@@ -45,39 +45,40 @@ if (!isset($_SESSION["username"])) {
 
   <!-- Primary Page Layout  -->
 
-  <?php $p="myaccount.php"; include('php/navbar.php'); ?>
+  <?php $p = "myaccount.php";
+  include('php/navbar.php'); ?>
 
-  <div class="card centered">
+  <section class="hero is-fullheight bg">
+    <div class="card centered">
 
-    <div class="card-content">
-      <div class="media">
-        <div class="media-left">
-          <figure class="image is-48x48">
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <p class="title is-4">
-            <?php 
+      <div class="card-content">
+        <div class="media">
+          <!--<div class="media-left">
+            <figure class="image is-48x48">
+              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            </figure>
+          </div>-->
+          <div class="media-content is-family-monospace">
+            <p class="title is-4">
+              <?php
               if (isset($_SESSION["username"])) {
-              echo GetValue("account", "name", "WHERE username='$_SESSION[username]'");
-              } 
-              else{
+                echo GetValue("account", "name", "WHERE username='$_SESSION[username]'");
+              } else {
                 echo "V̸̨̨̡̙͕̹̖̥̥̠̗͔͕̪̟̯̪̗̮̤̬̖̠̅̃́͒̾͋̏̂̿̓̑̓̔̏̐̓̆̍̄̕̕͘͘̕i̶̛̦͉̟͇͍̦̞̇̀͒́͆́̇͐̀́̉͂͊͂̐͛̈̈́̅̈́͌̕̚͜͝͠ȧ̶̦̿́̂͒̽͆͐̽̇̈́̉͘̕̕͠͝ͅ ̵̨̢̨̢̡̤̬̭̭͉̟̳̱̫̟͚͕̯͖̜̟̣̙̰̹͕̻͆̉̂́͜͜d̸̡̫͚͙̩̖̜͖̣̦̜̏̀́̑̏̈́͂̽͑̈́̎̏̾̊̈̍̎̈́̈́͘̕͜͠͝ã̶̢͚̦̹͉͎̞̳̦̳͚̮̟͍̻̼͋̊̇̓͋̊̂̇̋̈́͂̔́͘͠͠ ̷̛͉͓̣̤͇̜́̍̓̓q̴̧̢̢͍͈͔̘̻̬͓̹̮͎̬̂̇̊̔͋̈́̀͆̅̑̂̑̐̀̾̈́̄̔͊̈́͒̄̓̐͋̓̂̕͘͜͝ų̵̖͖̥̺̝͉̻͇̣̦͎̞̦̥͗̅͒̑͒͗̈͊͆͑̈́̕̚͠i̴͇͇̮͍̭̬̰̼͎̰̍̏̾̏̽͜͠ͅ";
-              } 
-            ?>
-          </p>
-          <p class="subtitle is-6">
-            <?php
-            if (isset($_SESSION["username"])) {        
-              echo "@" . $_SESSION["username"] . " - " . GetValue("account", "role", "WHERE username='$_SESSION[username]'");
-            }
-            ?>
-          </p>
+              }
+              ?>
+            </p>
+            <p class="subtitle is-6">
+              <?php
+              if (isset($_SESSION["username"])) {
+                echo "@" . $_SESSION["username"] . " - " . GetValue("account", "role", "WHERE username='$_SESSION[username]'");
+              }
+              ?>
+            </p>
+          </div>
         </div>
-      </div>
 
-      <!--<div class="content">
+        <!--<div class="content">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Phasellus nec iaculis mauris. <a>@bulmaio</a>.
         <a href="#">#css</a> <a href="#">#responsive</a>
@@ -93,12 +94,12 @@ if (!isset($_SESSION["username"])) {
         </time>
       </div>
       <footer class="card-footer">
-    <a href="#" class="card-footer-item">Cancella account</a>
-    <a href="#" class="card-footer-item">Gestisci prenotazioni</a>
-    <a href="php/logout.php" class="card-footer-item">Logout</a>
-  </footer>
+        <a href="#" class="card-footer-item centeredText">Cancella account</a>
+        <a href="myreservations.php" class="card-footer-item centeredText">Gestisci prenotazioni</a>
+        <a href="php/logout.php" class="card-footer-item centeredText">Logout</a>
+      </footer>
     </div>
-    
+  </section>
 
 
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->

@@ -15,7 +15,7 @@ function Login(username, password) {
         document.getElementById("LoginWrongPassword").style.display = "none";
     }
 
-    var loginData = JSON.stringify({ "username": username, "password": sha256(password) });
+    var loginData = JSON.stringify({ "username": username.toLowerCase(), "password": sha256(password) });
     $.ajax({
         url: "php/login.php",
         type: "POST",
@@ -26,8 +26,8 @@ function Login(username, password) {
         success: function (data) {
             location.href = "/Museo/";
         },
-        error: function (data){
-            switch(data.status){
+        error: function (data) {
+            switch (data.status) {
                 case 501:
                     document.getElementById('LoginWrongUsername').style.display = "block";
                     return;
@@ -67,7 +67,7 @@ function Signup(name, username, password) {
         document.getElementById("SignupNotValidPassword").style.display = "none";
     }
 
-    var signupData = JSON.stringify({ "name": name, "username": username, "password": sha256(password) });
+    var signupData = JSON.stringify({ "name": name, "username": username.toLowerCase(), "password": sha256(password) });
     console.log(signupData);
     $.ajax({
         url: "php/signup.php",
@@ -81,8 +81,25 @@ function Signup(name, username, password) {
         },
         error: function (data) {
             console.log(data);
-            document.getElementById("signupForm").style.display = "none";
-            document.getElementById("error").style.display = "block";
+            let signupForm = document.getElementById("signupForm");
+            let error = document.getElementById("error");
+            let errorText = document.getElementById("errorText");
+
+            switch (data.status) {          
+                case 504:
+                    document.getElementById("SignupAlreadyTakenName").style.display = "block";
+                    break;
+
+                case 501:
+                case 502:
+                case 503:
+                default:
+                    errorText.textContent = data.responseText;
+                    signupForm.style.display = "none";
+                    error.style.display = "block";
+                    break;
+            }
+
         }
     });
 }

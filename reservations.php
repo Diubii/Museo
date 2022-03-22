@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 
@@ -38,25 +38,28 @@ session_start();
 
   <!-- Primary Page Layout  -->
 
-  <?php $p = "reservations.php"; include('php/navbar.php'); ?>
+  <?php $p = "reservations.php";
+  include('php/navbar.php'); ?>
 
-  <div class="container centered">
-    <div class="box">
-    <h1 class="is-size-4 centeredText"><b>Tutte le prenotazioni</b></h1>
-    <br>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Numero di persone</th>
-            <th>Orario di ingresso</th>
-            <th>Contatto</th>
-          </tr>
-        </thead>
-        <?php include('php/reservations.php'); ?>
-      </table>
+  <section class="hero is-fullheight bg">
+    <div class="container centered">
+      <div class="box">
+        <h1 class="is-size-4 centeredText"><b>Tutte le prenotazioni</b></h1>
+        <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Numero di persone</th>
+              <th>Orario di ingresso</th>
+              <th>Contatto</th>
+            </tr>
+          </thead>
+          <?php include('php/reservations.php'); ?>
+        </table>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- End Document -->
 </body>

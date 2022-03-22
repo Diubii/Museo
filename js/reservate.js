@@ -41,7 +41,7 @@ function reservate(name, contact, n_people, entrance_time, username) {
         document.getElementById("NaN").style.display = "none";
     }
 
-    if (n_people < 1 && n_people > 5) {
+    if (n_people < 1 || n_people > 5) {
         document.getElementById("NotValidNumber").style.display = "block";
         return;
     }
@@ -49,7 +49,10 @@ function reservate(name, contact, n_people, entrance_time, username) {
         document.getElementById("NotValidNumber").style.display = "none";
     }
 
-    if (entrance_time == "") {
+    let dt = new Date(entrance_time);
+    let result = dt.getUTCMinutes() % 5;
+    //console.log("Date: " + dt + "; getUTCMinutes: " + dt.getUTCMinutes() + "; Result: " + result + ";");
+    if (entrance_time == "" || result != 0) {
         document.getElementById("NotValidDT").style.display = "block";
         return;
     }
@@ -82,9 +85,20 @@ function reservate(name, contact, n_people, entrance_time, username) {
             document.getElementById("success").style.display = "block";
         },
         error: function (data) {
-            console.log(data.responseText);
-            document.getElementById("form").style.display = "none";
-            document.getElementById("error").style.display = "block";
+            console.log(data);
+
+            switch(data.status){
+                case 501:
+                    document.getElementById("AlreadyChosenDT").style.display = "block";
+                    break;
+                case 502:
+                    document.getElementById("TooManyPeople").textContent = data.responseText;
+                    document.getElementById("TooManyPeople").style.display = "block";
+                    break;
+                default:
+                    document.getElementById("form").style.display = "none";
+                    document.getElementById("error").style.display = "block";
+            }
         }
     });
     console.log("Name: " + name + "\n Contact: " + contact + "\n People: " + n_people + "\n Entrance Time: " + entrance_time)
