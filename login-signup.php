@@ -77,8 +77,7 @@
       </div>
     </div>
 
-    <div class="container centered" id="loginForm" style="display:block;">
-      <div class="box">
+      <div class="box"id="loginForm" style="display:block; margin: auto;">
 
         <div class="field">
           <label class="label">Username</label>
@@ -106,7 +105,7 @@
       </div>
     </div>
 
-    <div class="container centered" id="error" style="display:none;">
+    <div class="box p-6" id="error" style="display:none; margin:auto;">
       <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 122.88 122.88">
         <defs>
           <style>

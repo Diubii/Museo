@@ -103,8 +103,7 @@ session_start();
 
     ?>
 
-    <div class="container centered" id="form" style="display: none;">
-      <div class="box">
+      <div class="box p-5" id="form" style="display: none; margin:auto;">
         <div class="field">
           <label class="label">Nome</label>
           <div class="control">
@@ -153,7 +152,7 @@ session_start();
       </div>
     </div>
 
-    <div class="container centered" id="error" style="display:none;">
+    <div class="box p-6" id="error" style="display:none; margin:auto;">
       <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 122.88 122.88">
         <defs>
           <style>
@@ -176,7 +175,7 @@ session_start();
       </div>
     </div>
 
-    <div class="container centered" id="success" style="display:none;">
+    <div class="box p-6" id="success" style="display:none; margin:auto;">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="display:block; margin:auto;" preserveAspectRatio="xMidYMin" width="300" height="300" viewBox="0 0 50 50" id="Capa_1" xml:space="preserve">
         <circle style="fill:#25AE88;" cx="25" cy="25" r="25" />
         <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="  38,15 22,33 12,25 " />

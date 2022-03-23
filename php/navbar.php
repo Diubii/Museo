@@ -23,6 +23,12 @@ $nav = '<nav class="navbar" role="navigation" aria-label="main navigation">
         Gestisci prenotazioni
       </a>
     </div>
+
+    <div class="navbar-item">
+      <a class="navbar-item" href="affluence.php">
+        Affluenza settimanale
+      </a>
+    </div>
   </div>
 
 <div class="navbar-end">';
