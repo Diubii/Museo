@@ -24,7 +24,7 @@ function Login(username, password) {
             loginData: loginData
         },
         success: function (data) {
-            location.href = "/Museo/";
+            location.href = "/";
         },
         error: function (data) {
             switch (data.status) {
@@ -77,7 +77,7 @@ function Signup(name, username, password) {
             signupData: signupData
         },
         success: function () {
-            location.href = "/Museo/";
+            location.href = "/";
         },
         error: function (data) {
             console.log(data);

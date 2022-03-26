@@ -49,8 +49,8 @@ session_start();
   <section class="hero is-fullheight bg">
     <?php
     if (!isset($_SESSION["username"])) {
-      echo '<div id="container" class="container centered">
-        <div class="box">
+      echo '<div id="container" class="box" style="margin: auto;">
+
             <h1 class="is-size-4 centeredText"><b>Inserire l\'id della propria prenotazione</b></h1>
             <br>
             <input class="input is-large centeredText" type="text" id="inputID" placeholder="es. AB123">
@@ -58,12 +58,12 @@ session_start();
             <br>
             <div class="buttons centeredText">
         <button class="button is-primary" type="submit" onclick="FindReservation()">Inserisci</button> 
-      </div>
+
         </div>
     </div>
 
-    <div id="tbcontainer" class="container centered" style="display:none;">
-        <div class="box">
+    <div id="tbcontainer" class="box" style="display:none; margin: auto;">
+
           <table class="table">
             <thead>
               <tr>
@@ -77,11 +77,11 @@ session_start();
             <tbody id="tBody">
             </tbody>
             </table>
-            </div>
+ 
           </div>';
     } else {
-      echo '<div id="container" class="container centered">
-        <div class="box">
+      echo '<div id="container" class="box" style="margin: auto;">
+
         <h1 class="is-size-4 centeredText"><b>Le mie prenotazioni</b></h1>
                 <br>
           <table class="table">
@@ -97,7 +97,7 @@ session_start();
       include('php/myreservations.php');
       echo '         
     </table>
-    </div>
+
   </div>';
     }
 

@@ -3,7 +3,7 @@ include('php/methods.php');
 
 session_start();
 if (!isset($_SESSION["username"])) {
-  header("Location: /Museo/");
+  header("Location: /");
   die();
 }
 //echo "<script>console.log(" ."\"". $_SESSION["username"] ."\"" . ")</script>"
@@ -33,6 +33,7 @@ if (!isset($_SESSION["username"])) {
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
   <link rel="stylesheet" href="css/default.css">
 
   <!-- Favicon
@@ -49,7 +50,7 @@ if (!isset($_SESSION["username"])) {
   include('php/navbar.php'); ?>
 
   <section class="hero is-fullheight bg">
-    <div class="card centered">
+    <div class="card" style="margin:auto;">
 
       <div class="card-content">
         <div class="media">
@@ -94,7 +95,7 @@ if (!isset($_SESSION["username"])) {
         </time>
       </div>
       <footer class="card-footer">
-        <a href="#" class="card-footer-item centeredText">Cancella account</a>
+        <!--<a href="#" class="card-footer-item centeredText">Cancella account</a>-->
         <a href="myreservations.php" class="card-footer-item centeredText">Gestisci prenotazioni</a>
         <a href="php/logout.php" class="card-footer-item centeredText">Logout</a>
       </footer>

@@ -22,6 +22,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
   <link rel="stylesheet" href="css/default.css">
 
   <!-- Favicon
@@ -38,8 +39,7 @@
   include('php/navbar.php'); ?>
 
   <section class="hero is-fullheight bg">
-    <div class="container centered" id="signupForm" style="display:none;">
-      <div class="box">
+      <div class="box" id="signupForm" style="display:none; margin: auto;">
         <div class="field">
           <label class="label">Nome</label>
           <div class="control">

@@ -27,6 +27,7 @@ session_start();
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
   <link rel="stylesheet" href="css/default.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
@@ -107,11 +108,11 @@ session_start();
 
       </div>
       <div class="centeredText">
-        <a href="/Museo/" class="is-size-4">Torna alla home</a>
+        <a href="/" class="is-size-4">Torna alla home</a>
       </div>
     </div>
 
-    <div class="box p-6" id="error" style="display:none; margin:auto;">
+    <div class="box container p-6" id="error" style="display:none; margin:auto;">
       <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 122.88 122.88">
         <defs>
           <style>
